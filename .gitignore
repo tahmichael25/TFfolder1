@@ -1,0 +1,14 @@
+# Terraform-specific files
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+
+# Sensitive files
+.aws/credentials
+.aws/config
+
+# Temporary files
+*.swp
+#The specific versions locked in .terraform.lock.hcl are often tied to your local environment and may not be necessary for other developers or deployment environments.
+#Committing .terraform.lock.hcl can lead to merge conflicts if multiple developers are working on the same project and using different versions of modules or providers.
+.terraform.lock.hcl
