@@ -2,11 +2,11 @@
 ###########################################################################################
 # Example - 1
 ###########################################################################################
-/*
+
 locals {
   common_tags = {
     Owner = "DevOps Team"
-    service = "backend"
+    environment = "prod"
   }
 }
 
@@ -16,7 +16,9 @@ resource "aws_instance" "app-dev" {
    instance_type = "t2.micro"
    tags = local.common_tags
 }
+
 #
+/*
 resource "aws_instance" "db-dev" {
    ami = "ami-XXXXXXXXXXXX"
    instance_type = "t2.small"
@@ -89,3 +91,17 @@ resource "aws_instance" "test3" {
 }
 
 */
+
+resource "aws_vpc" "prod_vpc" {
+  cidr_block = "10.0.0.0/16"
+
+}
+
+resource "aws_instance" "prod_instance" {
+  ami = "ami-989y840304"
+  instance_type = "t2.micro"
+
+  tags {
+    Name = "prod_server"
+  }
+}
